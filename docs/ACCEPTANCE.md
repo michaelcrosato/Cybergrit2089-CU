@@ -26,13 +26,23 @@ Audit date: 2026-10-16. This records observed results against the original `BRIE
 ## Checks
 
 - `npm run check`: **17 tests passed**, zero failures, static build succeeded.
-- `npm run test:browser`: final run in progress at the time this record was drafted.
-- `viewport-matrix`: final screenshot review pending at the time this record was drafted.
-- Publication: public repository created; final commit, CI and hosted build verification pending at the time this record was drafted.
+- `npm run test:browser`: **passed**. Standard-mapped simulated DualSense controls, rumble calls, title focus, dialogue close, pause/resume, reload/switch, touchpad map, disconnection, save reload, all interruption devices (including release), and three complete autonomous endings. Zero page/console errors. Final report: `/tmp/cybergrit-browser/report.json`.
+- `viewport-matrix http://localhost:5189 -o /tmp/cybergrit-viewports --dpr1`: **24 clean captures across 14 device/viewport profiles**, including WebKit phones/tablets and all three engines on desktop/ultrawide. No overflow, JS errors, console errors, HTTP failures or failed requests. All contact-sheet images were inspected; representative original PNGs and gameplay/dialogue/result screens were also inspected. Files: `/tmp/cybergrit-viewports/` and `/tmp/cybergrit-scenes/`.
+- Publication: **public and deployed**. Source release commit `48853752cc2b4e1f5a272db61816ac93d06b6041`. [GitHub verification and deployment run](https://github.com/michaelcrosato/Cybergrit2089-CU/actions/runs/38966115794) completed successfully, including fresh install, all 17 systems tests, build, Chromium/controller checks, headless WebKit/Firefox checks, and Pages deployment. [Public game](https://michaelcrosato.github.io/Cybergrit2089-CU/) returns HTTP 200; hosted HTML, main module and engine bytes match the local source. A fresh public-URL browser session entered the level, spoke to Rook and advanced to the relay objective with zero errors.
+
+## Measured desktop performance
+
+| Browser / presentation | Viewport | Samples | Average FPS | Lowest half-second sample |
+|---|---|---:|---:|---:|
+| Chromium, headless | 1920×1080 | 216 | **59.6** | 48 |
+| Webkit, windowed | 1366×768 | 60 | **57.4** | 26 |
+| Firefox, headless | 1366×768 | 60 | **59.9** | 58 |
+
+Each measured run completed the actual level. Chromium covered all three endings; the nonlethal run completed with zero shots, zero kills, zero detections and zero damage. These are samples of the engine’s measured frame rate, not fixed display values. The full browser suite exited successfully.
 
 ## Verification limits
 
-The host reports an RTX 3060 Ti, but Canvas rendering and headless compositing are also CPU/browser dependent. Frame results identify the browser and viewport, and should not be read as a native Windows GPU benchmark. Averages do not imply that every individual frame meets 40 ms. Cold caches can produce brief dips.
+The host reports an RTX 3060 Ti, but Canvas rendering and headless compositing are also CPU/browser dependent. Frame results identify the browser and viewport, and should not be read as a native Windows GPU benchmark. Averages do not imply that every individual frame meets 40 ms. Cold caches can produce brief dips. Linux headless WebKit’s software compositor measured roughly 20–26 FPS in separate diagnostic runs; the desktop performance gate therefore uses normal windowed WebKit on this display-capable target host. Headless WebKit still passes functional and viewport checks. This distinction is explicit in the browser harness and results.
 
 Controller behavior is tested through the standard browser API, including vibration calls. Physical DualSense feel has not been tested. WebKit is a Safari-engine compatibility check; real iOS Safari is unavailable here. Mobile is intentionally a spectator display and has no touch gameplay controls.
 

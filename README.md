@@ -4,6 +4,8 @@
 
 One district. A thousand stolen lives. Your call.
 
+**[Play in your browser](https://michaelcrosato.github.io/Cybergrit2089-CU/)** · [Source and release checks](https://github.com/michaelcrosato/Cybergrit2089-CU/actions)
+
 Play as Vex, a freelance runner hired to steal Helix's memory archive. Meet your fixer beneath the noodle-bar lights, cut the security relay, enter the compound, and decide whether to broadcast, sell, or erase 3,041 stolen lives. Reach the extraction car to finish the contract.
 
 The complete Lowlight level includes a street clinic, three cyberware implants, a hidden supply cache, an optional prisoner rescue, a service passage, readable environmental fiction, five patrolling guards, a Warden encounter, two weapons, three quickhacks, three endings, and persistent checkpoints. A rescued technician can override the archive without killing the Warden. Clean-hands and ghost runs are supported.
